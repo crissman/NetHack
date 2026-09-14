@@ -90,6 +90,8 @@ after polymorph or revival from corpse, monsters were not interacting with
 fix undead corpses (zombies, etc.) now being edible
 alias rings of constitution, strength, and damage, spellbook/scroll of
 	identification
+clear negative monster movement left by overflow in older saves, which
+	could leave a dismounted steed unable to act for hundreds of turns
 
 
 Platform- and/or Interface-Specific Fixes

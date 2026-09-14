@@ -1215,8 +1215,8 @@ getlev(NHFILE *nhfp, int pid, xint8 lev)
             gp.pending_terrain_effects |= (mtmp->mstate & TERRAIN_FALLOUT_MASK);
         if (mtmp->isshk)
             set_residency(mtmp, FALSE);
-        /* set some monst fields to sane values when coming from a bones file */
-        if (ghostly) {
+        /* discard movement debt left by overflow in older saves */
+        if (ghostly || mtmp->movement < 0) {
             mtmp->movement = 0;
         }
         if (mtmp->m_id == u.usteed_mid) {
