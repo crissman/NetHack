@@ -1215,8 +1215,9 @@ getlev(NHFILE *nhfp, int pid, xint8 lev)
             gp.pending_terrain_effects |= (mtmp->mstate & TERRAIN_FALLOUT_MASK);
         if (mtmp->isshk)
             set_residency(mtmp, FALSE);
-        /* discard movement debt left by overflow in older saves */
-        if (ghostly || mtmp->movement < 0) {
+        /* allow debt from repeated emergency actions, but discard extreme
+           negative movement left by overflow in older saves */
+        if (ghostly || mtmp->movement < -100 * NORMAL_SPEED) {
             mtmp->movement = 0;
         }
         if (mtmp->m_id == u.usteed_mid) {
